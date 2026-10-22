@@ -1,0 +1,7 @@
+pandas
+openpyxl
+numpy>=2.0
+matplotlib
+scipy
+jupyterlab
+pillow

@@ -130,3 +130,63 @@ def sir_stacked_plot(results, N, *, ax=None, title=None,
     )
 
     return ax
+
+# Plot incidence per 100k people, prevalence %, and attack rate %
+
+def epidemiological_measures_plot(
+    results,
+    *,
+    figsize=(17, 4.5),
+):
+
+    fig, axes = plt.subplots(
+        1, 3,
+        figsize=figsize,
+        sharex=True,
+        constrained_layout=True,
+    )
+
+    measures = [
+        (
+            "incidence_per_100k",
+            "Daily Incident Infections",
+            "New infections per 100,000",
+            "#D62728",
+        ),
+        (
+            "prevalence_pct",
+            "Infectious Prevalence",
+            "Population (%)",
+            "#1F77B4",
+        ),
+        (
+            "attack_rate_pct",
+            "Cumulative Attack Rate",
+            "Initially susceptible (%)",
+            "#2CA02C",
+        ),
+    ]
+
+    for ax, (column, title, ylabel, color) in zip(axes, measures):
+
+        ax.plot(
+            results["day"],
+            results[column],
+            color=color,
+            linewidth=2.5,
+        )
+
+        ax.set(
+            title=title,
+            xlabel="Days since introduction",
+            ylabel=ylabel,
+        )
+
+        ax.set_xlim(results["day"].min(), results["day"].max())
+        ax.set_ylim(bottom=0)
+
+        ax.grid(alpha=0.2)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+
+    return fig, axes

@@ -36,11 +36,8 @@ The geographic scope is limited to the **contiguous 48 U.S. states**, excluding 
 
 Although the simulations use real population and geographic data, transmission parameters, contact patterns, and intervention effects are hypothetical and are not calibrated to observed epidemiological data.
 
-The `Data_Processed` directory contains all of the processed datasets required to run the notebook, while the `dataset_builder.py` documents how these datasets were constructed from the original Census and TIGER/Line files.
-
 ## Project Structure
 
 - `SIR_Simulation.ipynb`: Primary notebook containing the models, experiments, visualizations, and explanations.
 - `notebook_helpers.py`: Reusable helper functions for the notebook. Placing functions here allows the notebook to focus on the modeling itself.
-- `Data_Processed/`: Processed population and geographic datasets used by the notebook.
 - `dataset_builder.py`: Preprocessing script used to construct the geographic and population datasets from the original sources.
